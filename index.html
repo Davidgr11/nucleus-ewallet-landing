@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
     <header class="header">
@@ -30,10 +31,10 @@
             </div>
             <div class="header__grid">
                 <div class="header__texto">
-                    <h1 class="header__heading">Recibe y realiza pagos con tu celular con Nucleus</h1>
+                    <h1 class="header__heading animate-on-scroll" data-anim="animate__bounceInLeft">Recibe y realiza pagos con tu celular con Nucleus</h1>
                     <a class="header__boton" href="#">Obtener cuenta</a>
                 </div>
-                <div class="header__grafico">
+                <div class="header__grafico animate-on-scroll" data-anim="animate__flipInY">
                     <img class="header__imagen" src="img/app_1.svg" alt="imagen de celular">
                 </div>
             </div>
@@ -45,7 +46,7 @@
         <h2 class="nucleus__heading">Características</h2>
         <div class="nucleus__contenedor">
             <div class="nucleus__grid">
-                <div class="nucleus__img">
+                <div class="nucleus__img  animate-on-scroll" data-anim="animate__flipInY">
                     <img src="img/app_2.svg" alt="imagen de celular">
                 </div>
                 <div class="listado">
@@ -82,7 +83,7 @@
                         <p class="listado__texto">Paga en un establecimiento con una tarjeta que se desactiva después de hacer tu compra.</p>
                     </div>
                 </div>
-                <div class="seguridad__img">
+                <div class="seguridad__img animate-on-scroll" data-anim="animate__flipInY">
                     <img src="img/seguridad.png" alt="imagen de celular">
             </div>
         </div>
@@ -105,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="comisiones__img">
+                <div class="comisiones__img animate-on-scroll" data-anim="animate__flipInY">
                     <img src="img/app_3.svg" alt="imagen de celular">
 
                 </div>
@@ -119,27 +120,27 @@
             <div class="testimoniales__grid">
                 <div class="testimonial">
                     <p class="testimonial__texto">"Nucleus me ha ayudado a controlar mis gastos y a tener un mejor manejo de mi dinero."</p>
-                    <p class="testimonial__autor">- Juan Pérez</p>
+                    <p class="testimonial__autor animate-on-scroll" data-anim="animate__flipInY">- Juan Pérez</p>
                 </div>
                 <div class="testimonial">
                     <p class="testimonial__texto">"Con Nucleus, enviar dinero a mis hijos se volvió más fácil y rápido que nunca. Me encanta lo segura que es la app."</p>
-                    <p class="testimonial__autor">- Lucía Méndez</p>
+                    <p class="testimonial__autor animate-on-scroll" data-anim="animate__flipInY">- Lucía Méndez</p>
                 </div>
                 <div class="testimonial">
                     <p class="testimonial__texto">"He probado varias apps financieras, pero Nucleus me sorprendió por lo intuitiva que es y lo mucho que me ayuda a controlar mis gastos."</p>
-                    <p class="testimonial__autor">- Sandra Suárez</p>
+                    <p class="testimonial__autor animate-on-scroll" data-anim="animate__flipInY">- Sandra Suárez</p>
                 </div>
                 <div class="testimonial">
                     <p class="testimonial__texto">"Uso Nucleus todos los días para pagar en el súper y enviar dinero a mi familia. Además, mientras más la uso, ¡menos comisiones pago!"</p>
-                    <p class="testimonial__autor">- Andrés López</p>
+                    <p class="testimonial__autor animate-on-scroll" data-anim="animate__flipInY">- Andrés López</p>
                 </div>
                 <div class="testimonial">
                     <p class="testimonial__texto">"Crear mi cuenta fue facilísimo, en menos de dos horas ya estaba enviando dinero. La recomiendo totalmente."</p>
-                    <p class="testimonial__autor">- Sofía Aguilar</p>
+                    <p class="testimonial__autor animate-on-scroll" data-anim="animate__flipInY">- Sofía Aguilar</p>
                 </div>
                 <div class="testimonial">
                     <p class="testimonial__texto">"Me sentía insegura al hacer pagos digitales, pero con el sistema de seguridad de Nucleus, ahora me siento tranquila cada vez que la uso."</p>
-                    <p class="testimonial__autor">- Mariana Torres</p>
+                    <p class="testimonial__autor animate-on-scroll" data-anim="animate__flipInY">- Mariana Torres</p>
                 </div>
             </div>
         </div>
@@ -155,6 +156,24 @@
             </div>
         </div>
     </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const animClass = el.dataset.anim;
+                    el.classList.remove('animate-on-scroll');
+                    el.classList.add('animate__animated', animClass);
+                    observer.unobserve(el); // solo una vez
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
     
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

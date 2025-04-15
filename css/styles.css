@@ -399,3 +399,21 @@ img {
     }
     
 }
+
+.animated__bounceInLeft {
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+}
+.animated__flipInY {
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.animate__animated {
+    visibility: visible !important;
+}
